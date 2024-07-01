@@ -3,6 +3,7 @@ import 'package:flutter_adv_course_2/core/Routing/app_router.dart';
 import 'package:flutter_adv_course_2/core/Routing/routes.dart';
 import 'package:flutter_adv_course_2/core/Theming/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class DocApp extends StatelessWidget {
   final AppRouter appRouter;
   const DocApp({super.key, required this.appRouter});
@@ -10,11 +11,11 @@ class DocApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-       designSize: const Size(375, 812),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Flutter Advanced Course',
         theme: ThemeData(
           primaryColor: ColorsManager.primaryColor,
           scaffoldBackgroundColor: Colors.white,
@@ -23,7 +24,6 @@ class DocApp extends StatelessWidget {
         initialRoute: Routes.onBoardingScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
-    
     );
   }
 }
