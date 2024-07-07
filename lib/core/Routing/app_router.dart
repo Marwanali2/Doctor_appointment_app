@@ -4,8 +4,9 @@ import 'package:flutter_adv_course_2/features/login/ui/login_screen.dart';
 import 'package:flutter_adv_course_2/features/onboarding/onboarding_screen.dart';
 
 class AppRouter{
-  @override
   Route generateRoute(RouteSettings settings){
+    // this is the arguments that we can pass to the screen like  this Navigator.pushNamed(context, Routes.loginScreen, arguments: 'Hello');
+    final arguments=settings.arguments;
     switch(settings.name){
       case Routes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());

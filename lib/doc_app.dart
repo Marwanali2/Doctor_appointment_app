@@ -17,7 +17,7 @@ class DocApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Advanced Course',
         theme: ThemeData(
-          primaryColor: ColorsManager.primaryColor,
+          primaryColor: ColorsManager.mainBlue,
           scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,
