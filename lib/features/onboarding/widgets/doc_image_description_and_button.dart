@@ -17,7 +17,7 @@ class DocImageDescriptionAndButton extends StatelessWidget {
           Text(
             'Manage and schedule all of your medical appointments\neasily with Docdoc to get a new experience.',
             textAlign: TextAlign.center,
-            style: TextStyles.font13Grey400weight,
+            style: TextStyles.font13GrayRegular,
           ),
           SizedBox(height: 30.h),
           const GetStartedButton(),
