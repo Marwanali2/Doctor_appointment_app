@@ -12,8 +12,10 @@ class AppTextFormField extends StatefulWidget {
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
   final Color? backgroundColor;
-    final Widget? suffixIcon;
-    final bool? isPassword;
+  final Widget? suffixIcon;
+  final bool? isPassword;
+  final TextEditingController? controller;
+  final Function(String?) validator;
   const AppTextFormField({
     super.key,
     this.contentPadding,
@@ -23,7 +25,11 @@ class AppTextFormField extends StatefulWidget {
     this.inputTextStyle,
     this.focusedBorder,
     this.enabledBorder,
-    this.backgroundColor, this.suffixIcon, this.isPassword,
+    this.backgroundColor,
+    this.suffixIcon,
+    this.isPassword,
+    this.controller,
+    required this.validator,
   });
 
   @override
@@ -34,7 +40,9 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
   bool isObscureText;
   final FocusNode _focusNode;
 
-  _AppTextFormFieldState() : isObscureText = false, _focusNode = FocusNode();
+  _AppTextFormFieldState()
+      : isObscureText = false,
+        _focusNode = FocusNode();
 
   @override
   void initState() {
@@ -74,20 +82,34 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
               borderSide:
                   BorderSide(color: ColorsManager.lighterGrey, width: 1.3.w),
             ),
+            errorBorder:  OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16.r),
+              borderSide:
+                  BorderSide(color: Colors.red, width: 1.3.w),
+            ),
+            focusedErrorBorder:  OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16.r),
+              borderSide:
+                  BorderSide(color: Colors.red, width: 1.3.w),
+            ),
         hintText: widget.hintText,
         hintStyle: widget.hintStyle ?? TextStyles.font14LightGrayRegular,
-        suffixIcon: widget.isPassword==true? GestureDetector(
-          onTap: () => setState(() => isObscureText = !isObscureText),
-          child: Icon(
-            isObscureText ? Icons.visibility_off : Icons.visibility,
-            color: _focusNode.hasFocus ? Colors.blue : Colors.grey,
-          ),
-        ):widget.suffixIcon,
+        suffixIcon: widget.isPassword == true
+            ? GestureDetector(
+                onTap: () => setState(() => isObscureText = !isObscureText),
+                child: Icon(
+                  isObscureText ? Icons.visibility_off : Icons.visibility,
+                  color: _focusNode.hasFocus ? Colors.blue : Colors.grey,
+                ),
+              )
+            : widget.suffixIcon,
         fillColor: widget.backgroundColor ?? ColorsManager.moreLighterGrey,
         filled: true,
       ),
+      controller: widget.controller,
       obscureText: isObscureText,
       style: TextStyles.font14DarkBlueMedium,
+      validator: (value) => widget.validator(value),
     );
   }
 }
