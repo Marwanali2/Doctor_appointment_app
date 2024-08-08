@@ -67,6 +67,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   # for svg files
   flutter_svg: ^2.0.9
+  firebase_core: ^2.24.2
 
 dev_dependencies:
 # flutter pub run build_runner build "flutter pub run build_runner build --delete-conflicting-outputs" OR "dart run build_runner build"
