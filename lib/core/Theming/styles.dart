@@ -33,6 +33,11 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.darkBlue,
   );
+    static TextStyle font11SemiGreyRegular = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.semiGrey,
+  );
 
   static TextStyle font24BlueBold = TextStyle(
     fontSize: 24.sp,
@@ -128,6 +133,12 @@ class TextStyles {
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.darkBlue,
+  );
+
+  static TextStyle font18SemiDarkBold = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.semiDark,
   );
 
   static TextStyle font18DarkBlueSemiBold = TextStyle(
