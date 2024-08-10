@@ -15,6 +15,7 @@ class EmailAndPassword extends StatefulWidget {
 
 class _EmailAndPasswordState extends State<EmailAndPassword> {
   var isObscureText = true;
+  late TextEditingController emailController;
   late TextEditingController passwordController;
   bool hasLowerCase = false;
   bool hasUpperCase = false;
@@ -23,6 +24,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   bool hasMinLength = false;
   @override
   void initState() {
+    emailController = context.read<LoginCubit>().emailController;
     passwordController = context.read<LoginCubit>().passwordController;
     setupPasswordcontrollerListener();
     super.initState();
@@ -30,12 +32,14 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
 
   void setupPasswordcontrollerListener() {
     passwordController.addListener(() {
-      final password = passwordController.text;
-      hasLowerCase = AppRegex.hasLowerCase(password);
-      hasUpperCase = AppRegex.hasUpperCase(password);
-      hasSpecialCharacter = AppRegex.hasSpecialCharacter(password);
-      hasNumber = AppRegex.hasNumber(password);
-      hasMinLength = AppRegex.hasMinLength(password);
+      setState(() {
+        final password = passwordController.text;
+        hasLowerCase = AppRegex.hasLowerCase(password);
+        hasUpperCase = AppRegex.hasUpperCase(password);
+        hasSpecialCharacter = AppRegex.hasSpecialCharacter(password);
+        hasNumber = AppRegex.hasNumber(password);
+        hasMinLength = AppRegex.hasMinLength(password);
+      });
       setState(() {});
     });
   }
@@ -48,7 +52,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           children: [
             AppTextFormField(
               hintText: 'Email',
-              controller: context.read<LoginCubit>().emailController,
+              controller: emailController,
               validator: (value) {
                 if (value == null ||
                     value.isEmpty ||
@@ -60,7 +64,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
             verticalSpace(18),
             AppTextFormField(
               hintText: 'Password',
-              controller: context.read<LoginCubit>().passwordController,
+              controller: passwordController,
               isObscureText: isObscureText,
               isPassword: true,
               suffixIcon: GestureDetector(
