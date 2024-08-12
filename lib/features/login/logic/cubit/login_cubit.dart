@@ -20,8 +20,8 @@ class LoginCubit extends Cubit<LoginState> {
     final response = await _loginRepo.login(LoginRequestBody(
         email: emailController.text, password: passwordController.text));
     response.when(success: (data) async {
-      await SharedPrefHelper.setData(
-          SharedPrefKeys.userToken, data.userData?.token);
+      await SharedPrefHelper.setSecureString(
+          SharedPrefKeys.userToken, data.userData?.token??'');
           DioFactory.setTokenAfterLogin(data.userData?.token??'');
 
       emit(LoginState.sucess(data));
