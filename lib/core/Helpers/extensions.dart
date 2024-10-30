@@ -13,4 +13,11 @@ extension Navigation on BuildContext {
   void pop() {
     return Navigator.of(this).pop();
   }
+  
+}
+
+extension StringValidator on String? {
+  bool get isNullOrEmpty {
+    return this == null && this=='';
+  }
 }

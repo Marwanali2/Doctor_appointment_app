@@ -68,6 +68,10 @@ dependencies:
   # for svg files
   flutter_svg: ^2.0.9
   firebase_core: ^2.24.2
+  # for storing token locally
+  shared_preferences: 
+  # for storing token securely
+  flutter_secure_storage: 
 
 dev_dependencies:
 # flutter pub run build_runner build "flutter pub run build_runner build --delete-conflicting-outputs" OR "dart run build_runner build"
